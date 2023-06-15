@@ -1,0 +1,112 @@
+class AtomInfo {
+    static maxPossibleBonds(element) {
+        const upcaseEl = element.toUpperCase();
+        if (!this.maxBonds.hasOwnProperty(upcaseEl)) {
+            return -1;
+        }
+        return this.maxBonds[upcaseEl];
+    }
+}
+
+/*----------------------------------------------------------------------*/
+
+AtomInfo.maxBonds = {
+    'C': 4, 'SI': 4, 'N': 3, 'O': 2, 'P': 3, 'S': 2, 'B': 3, 'F': 1, 'I': 1, 'CL': 1, 'BR': 1
+};
+
+/*----------------------------------------------------------------------*/
+
+AtomInfo.metalElements = [
+    'Li',
+    'Be',
+    'Na',
+    'Mg',
+    'Al',
+    'K',
+    'Ca',
+    'Sc',
+    'Ti',
+    'V',
+    'Cr',
+    'Mn',
+    'Fe',
+    'Co',
+    'Ni',
+    'Cu',
+    'Zn',
+    'Ga',
+    'Rb',
+    'Sr',
+    'Y',
+    'Zr',
+    'Nb',
+    'Mo',
+    'Tc',
+    'Ru',
+    'Rh',
+    'Pd',
+    'Ag',
+    'Cd',
+    'In',
+    'Sn',
+    'Cs',
+    'Ba',
+    'La',
+    'Ce',
+    'Pr',
+    'Nd',
+    'Pm',
+    'Sm',
+    'Eu',
+    'Gd',
+    'Tb',
+    'Dy',
+    'Ho',
+    'Er',
+    'Tm',
+    'Yb',
+    'Lu',
+    'Hf',
+    'Ta',
+    'W',
+    'Re',
+    'Os',
+    'Ir',
+    'Pt',
+    'Au',
+    'Hg',
+    'Tl',
+    'Pb',
+    'Bi',
+    'Po',
+    'Fr',
+    'Ra',
+    'Ac',
+    'Th',
+    'Pa',
+    'U',
+    'Np',
+    'Pu',
+    'Am',
+    'Cm',
+    'Bk',
+    'Cf',
+    'Es',
+    'Fm',
+    'Md',
+    'No',
+    'Lr',
+    'Rf',
+    'Db',
+    'Sg',
+    'Bh',
+    'Hs',
+    'Mt',
+    'Ds',
+    'Rg',
+    'Cn',
+    'Nh',
+    'Fl',
+    'Mc',
+    'Lv'
+];
