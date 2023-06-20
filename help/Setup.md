@@ -58,7 +58,7 @@ PDB file and ligand name
 Via a ```fileContent``` variable that contains the content PDB file as string and a ```ligandName```
 variable that contains a ligand name in the format molecule_chain_number, e.g., 4SP_A_1298.
 ```javascript
-drawer.addByFile(id, fileContent);
+drawer.addByFile(fileContent, ligandName);
 ```
 
 After the setup of the InteractionDrawer instance, several callbacks functions can be set with
