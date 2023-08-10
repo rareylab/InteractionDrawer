@@ -127,7 +127,8 @@ which atoms are connected. Positions and colors are derived from the connected a
 
 ### Rings
 
-Given as an Array of Objects, each Object describes an individual ring. Available fields:
+Given as an Array of Objects, each Object describes an individual ring. It has to be provided for
+cation-pi/pi-stacking interactions. Available fields:
 
 - "id" (Number|mandatory): unique (!) ID of the ring within all structures
 - "atoms" (Array|mandatory): IDs of atoms involved in this ring
@@ -135,7 +136,7 @@ Given as an Array of Objects, each Object describes an individual ring. Availabl
 ### Ring Systems
 
 Given as an Array of Objects, each Object describes an individual ring system. Describe the cyclic
-regions of the structure. It has to be provided for pi-stacking interactions. Available fields:
+regions of the structure. Available fields:
 
 - "id" (Number|mandatory): unique (!) ID of the ring system within this structure
 - "atoms" (Array|mandatory): IDs of atoms involved in this ring system
