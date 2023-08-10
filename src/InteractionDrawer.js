@@ -268,6 +268,8 @@ class InteractionDrawer {
      * @param reset {Boolean} - resets the scene before adding the diagram
      * @param processingCallback {Function} - callback to be called while the diagram is still
      * loading
+     * @param preloadedCallback {Function} -  callback to be called before the drawing of the
+     * fetched diagram starts
      * @param loadedCallback {Function} -  callback to be called after the loading of the diagram
      * has finished
      * @param errorCallback {Function} - callback to be called if the diagram could not be loaded
@@ -275,6 +277,7 @@ class InteractionDrawer {
      */
     addById(id, ligandName, reset = true, {
         processingCallback,
+        preloadedCallback,
         loadedCallback,
         errorCallback
     } = {}) {
@@ -300,7 +303,14 @@ class InteractionDrawer {
                 while (polling) {
 
                     const responseGet = await fetch(jsonPost.location, {method: 'GET'});
-                    const jsonGetStatus = await responseGet.json();
+
+                    let jsonGetStatus;
+                    try {
+                        jsonGetStatus = await responseGet.json();
+                    } catch(e) {
+                        errorCallback();
+                        return;
+                    }
 
                     //still calculating?
                     if (jsonGetStatus.status_code === 200) {
@@ -310,6 +320,9 @@ class InteractionDrawer {
                             {method: 'GET'}
                         );
                         const jsonGetResults = await responseGetResults.json();
+                        if (preloadedCallback) {
+                            preloadedCallback();
+                        }
                         if (reset || !this.sceneData.structuresData.structureLoaded) {
                             this.userInteractionHandler.removeHandler.fullReset();
                             this.addByJSON(JSON.stringify(jsonGetResults));
