@@ -50,6 +50,16 @@ class RemoveHandler {
                 'cationPiStackings'
             );
         });
+        Object.keys(intermolecularData.distances).forEach(distanceId => {
+            this.svgDrawer.intermolecularDrawer.removeIntermolecularDOMCache(distanceId,
+                'distances'
+            );
+        });
+        Object.keys(intermolecularData.interactions).forEach(interactionId => {
+            this.svgDrawer.intermolecularDrawer.removeIntermolecularDOMCache(interactionId,
+                'interactions'
+            );
+        });
         Object.keys(this.sceneData.annotationsData.annotations).forEach(labelId => {
             this.svgDrawer.annotationDrawer.removeAnnotationDOMCache(labelId);
         });
