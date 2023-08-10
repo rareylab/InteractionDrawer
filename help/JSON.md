@@ -256,7 +256,7 @@ Available fields:
   the hydrophobic contact in the drawing, each control point being defined by its position of x- and
   y-coordinates. Each control point can also optionally be provided with "atomLinks": if one of the
   atoms referenced in this Array is moved, the control point then follows the movement. If not set,
-  the nearest atom is automatically linked to the control point.
+  the nearest atom is automatically linked to the control point
 - "controlPointsInsertId" (Number|optional): If a hydrophobic contact with "id" already exists, add
   the control points to the present contact. This defines at which position in the present control
   point to insert these given control points. Will be inserted at the end if undefined
@@ -297,10 +297,10 @@ Available fields:
 - "color" (String|optional): valid CSS color of the drawn text (defaults to black or color of splines
   when associated with a hydrophobic contact)
 - "isStructureLabel" (Boolean|optional): true if this should be hidden when the corresponding
-  structure's (if any) current representation is "circle".
+  structure's (if any) current representation is "circle"
 - "additionalInformation" (Object|optional): Any additional information that does not belong to the
   drawer directly and may be queried from an external source during runtime
 - "belongsTo" (Object|optional): binds the annotation to an element of the scene, defined by its
   type (either a "structure" or a spline as type "structureSpline") and its ID. This binding can
   also optionally be extended by "atomLinks": if one of the atoms referenced in this Array is moved,
-  the annotation follows the movement. If not set, the nearest atom is linked to the annotation.
+  the annotation follows the movement. If not set, the nearest atom is linked to the annotation
