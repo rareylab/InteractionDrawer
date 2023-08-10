@@ -1103,7 +1103,7 @@ class AddHandler {
                     'point',
                     color,
                     6,
-                    0.6,
+                    0.85,
                     annotation.structureLink
                 );
             }
@@ -1136,7 +1136,7 @@ class AddHandler {
                     'point',
                     color,
                     6,
-                    0.6,
+                    0.85,
                     structureId
                 );
             }
@@ -1318,7 +1318,7 @@ class AddHandler {
                 nglFeatureType: 'angle',
                 backgroundColor: color,
                 backgroundRadius: 5,
-                opacity: 1
+                opacity: 0.85
             },
             belongsTo: {
                 type: 'structure', id: commonStructure, atomLinks: []
