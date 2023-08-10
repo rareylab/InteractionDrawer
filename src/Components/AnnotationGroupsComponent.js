@@ -57,7 +57,8 @@ class AnnotationGroupsComponent {
                 additionalInformation.backgroundRadius,
                 styles
             );
-            if (additionalInformation.nglFeatureType === 'angle') {
+            if (additionalInformation.nglFeatureType === 'angle' ||
+                additionalInformation.nglFeatureType === 'point') {
                 sels.backgroundSel.lower()
             }
         }
