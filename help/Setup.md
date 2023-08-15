@@ -1,6 +1,6 @@
 # Prerequisites
 
-To utilise the library, you will need following JavaScript libraries.
+To utilise the library, you will need the following JavaScript libraries.
 
 D3 (https://d3js.org/)
 
@@ -40,13 +40,13 @@ const opts = {
 const drawer = new InteractionDrawer.Drawer('draw-area', opts);
 ```
 
-JSON
+**JSON**\
 Via a ```json``` variable containing a string JSON diagram (see JSON.md).
 ```javascript
 drawer.addByJSON(json);
 ```
 
-PDB code and ligand name
+**PDB code and ligand name**\
 Via a ```id``` variable that can either be a four-letter PDB code or a ProteinsPlus id of an
 uploaded PDB file and a ```ligandName``` variable that contains a ligand name in the format
 molecule_chain_number, e.g., 4SP_A_1298.
@@ -54,7 +54,7 @@ molecule_chain_number, e.g., 4SP_A_1298.
 drawer.addById(id, ligandName);
 ```
 
-PDB file and ligand name
+**PDB file and ligand name**\
 Via a ```fileContent``` variable that contains the content PDB file as string and a ```ligandName```
 variable that contains a ligand name in the format molecule_chain_number, e.g., 4SP_A_1298.
 ```javascript
