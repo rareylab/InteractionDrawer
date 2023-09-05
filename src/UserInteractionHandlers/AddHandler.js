@@ -1033,9 +1033,6 @@ class AddHandler {
                 if (surfaceAtomIds.includes(atomId) && !secondaryStructureMap[atomId]) {
                     const atom = atoms[atomId];
                     let color = this.opts.colors[atom.element];
-                    if (atom.element === 'C') {
-                        color = '#909090';
-                    }
                     this.addGeominePointFeature(atom.coordinates,
                         atom.id,
                         'surface',
@@ -1102,8 +1099,8 @@ class AddHandler {
                     queryPointName,
                     'point',
                     color,
-                    6,
-                    0.85,
+                    5,
+                    1,
                     annotation.structureLink
                 );
             }
@@ -1135,8 +1132,8 @@ class AddHandler {
                     queryPointName,
                     'point',
                     color,
-                    6,
-                    0.85,
+                    5,
+                    1,
                     structureId
                 );
             }
@@ -1304,8 +1301,8 @@ class AddHandler {
         const lengthbisector = VectorCalculation.vectorLength(bisector);
         bisector.x = bisector.x / lengthbisector
         bisector.y = bisector.y / lengthbisector
-        const endx = annotationCommon.coordinates.x + 5 * bisector.x
-        const endy = annotationCommon.coordinates.y + 5 * bisector.y
+        const endx = annotationCommon.coordinates.x + 4 * bisector.x
+        const endy = annotationCommon.coordinates.y + 4 * bisector.y
         if (!intermolecularEdge1 === undefined || !intermolecularEdge2 === undefined) return;
         const annotationId = AddHandler.getNextId(annotationsData.annotations);
         const annotation = {
@@ -1317,8 +1314,8 @@ class AddHandler {
                 nglFeatureName: nglFeatureName,
                 nglFeatureType: 'angle',
                 backgroundColor: color,
-                backgroundRadius: 5,
-                opacity: 0.85
+                backgroundRadius: 4,
+                opacity: 1
             },
             belongsTo: {
                 type: 'structure', id: commonStructure, atomLinks: []
