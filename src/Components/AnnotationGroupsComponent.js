@@ -59,7 +59,7 @@ class AnnotationGroupsComponent {
             );
             if (additionalInformation.nglFeatureType === 'angle' ||
                 additionalInformation.nglFeatureType === 'point') {
-                sels.backgroundSel.lower()
+                sels.backgroundSel.lower();
             }
         }
         sels.labelSel = labelSel;
@@ -69,6 +69,12 @@ class AnnotationGroupsComponent {
             this.annotationSelGroupDom,
             ''
         );
+        if (this.opts.geomineMode && additionalInformation &&
+            additionalInformation.nglFeatureType &&
+            (additionalInformation.nglFeatureType === 'angle' ||
+            additionalInformation.nglFeatureType === 'point')) {
+            mouseSels[0].lower();
+        }
         sels.mouseSels = mouseSels;
         sels.selectorShapes = selectorShapes;
         sels.placementInfo = {
