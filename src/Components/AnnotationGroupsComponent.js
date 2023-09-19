@@ -51,6 +51,11 @@ class AnnotationGroupsComponent {
                 styles['stroke'] = this.opts.colors.DEFAULT;
                 styles['stroke-width'] = 0.5;
             }
+            if (additionalInformation.nglFeatureType === 'secondarystructure') {
+                styles['stroke-dasharray'] = '0 1.2';
+                styles['stroke-linecap'] = 'round';
+                styles['stroke-width'] = 0.9;
+            }
             sels.backgroundSel = this.utils.circle.addCircleToSvg(this.annotationSelGroupDom,
                 '',
                 coordinates,
