@@ -1066,7 +1066,7 @@ class AddHandler {
                         secondaryStructureMap[atom.id],
                         'secondarystructure',
                         this.opts.geomine.SecondaryStructureColor,
-                        2,
+                        3,
                         1,
                         parseInt(structureId)
                     );
