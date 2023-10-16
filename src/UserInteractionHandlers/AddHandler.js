@@ -994,7 +994,7 @@ class AddHandler {
                         const atomIds = [];
                         const atoms = ring.atoms;
                         for (const atom of atoms) {
-                            atomIds.push(atom.id)
+                            atomIds.push(atom.additionalInformation.infileId)
                         }
                         const atomIdsString = atomIds.sort(function (a, b) {
                             return a - b;
@@ -1030,11 +1030,16 @@ class AddHandler {
             const structure = structures[structureId];
             const atoms = structure.atomsData.atomById;
             for (const atomId in atoms) {
-                if (surfaceAtomIds.includes(atomId) && !secondaryStructureMap[atomId]) {
-                    const atom = atoms[atomId];
+                const atom = atoms[atomId];
+                let infileId = atom.additionalInformation.infileId;
+                if (!infileId) {
+                    continue;
+                }
+                infileId = infileId.toString()
+                if (infileId && surfaceAtomIds.includes(infileId) && !secondaryStructureMap[infileId]) {
                     let color = this.opts.colors[atom.element];
                     this.addGeominePointFeature(atom.coordinates,
-                        atom.id,
+                        infileId,
                         'surface',
                         color,
                         2,
@@ -1058,12 +1063,16 @@ class AddHandler {
         const structures = this.sceneData.structuresData.structures;
         for (const structureId in structures) {
             const structure = structures[structureId];
-            const atoms = structure.atomsData.atoms;
+            const atoms = structure.atomsData.atomById;
             for (const atomId in atoms) {
                 const atom = atoms[atomId];
-                if (secondaryStructureMap[atom.id]) {
+                let infileId = atom.additionalInformation.infileId;
+                if (!infileId) {
+                    continue;
+                }
+                if (secondaryStructureMap[infileId]) {
                     this.addGeominePointFeature(atom.coordinates,
-                        secondaryStructureMap[atom.id],
+                        secondaryStructureMap[infileId],
                         'secondarystructure',
                         this.opts.geomine.SecondaryStructureColor,
                         3,
@@ -1117,25 +1126,35 @@ class AddHandler {
      * @param color {String} - color of the query point
      */
     addGeomineQueryPointForAtom(atomId, queryPointName, color) {
-        const structuresData = this.sceneData.structuresData;
-        const structureId = structuresData.atomIdsToStructure[atomId];
-        if (structureId !== undefined) {
-            this.svgDrawer.atomDrawer.unselectAtomDrawareaContainer(structureId,
-                atomId,
-                false,
-                false
-            );
-            const structure = structuresData.structures[structureId];
-            const atom = structure.atomsData.atomById[atomId];
-            if (atom) {
-                this.addGeominePointFeature(atom.coordinates,
-                    queryPointName,
-                    'point',
-                    color,
-                    5,
-                    1,
-                    structureId
-                );
+        const structures = this.sceneData.structuresData.structures;
+        for (const structureId in structures) {
+            const structure = structures[structureId];
+            const atoms = structure.atomsData.atomById;
+            for (const id in atoms) {
+                const atom = atoms[id];
+                if (!atom) {
+                    continue;
+                }
+                let infileId = atom.additionalInformation.infileId;
+                if (!infileId) {
+                    continue;
+                }
+                if (parseInt(atomId) === infileId) {
+                    this.svgDrawer.atomDrawer.unselectAtomDrawareaContainer(structureId,
+                        parseInt(id),
+                        false,
+                        false
+                    );
+                    this.addGeominePointFeature(
+                        atom.coordinates,
+                        queryPointName,
+                        'point',
+                        color,
+                        5,
+                        1,
+                        parseInt(structureId)
+                    );
+                }
             }
         }
     }
