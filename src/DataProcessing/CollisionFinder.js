@@ -247,10 +247,6 @@ class CollisionFinder {
                     const selectorPoints = interaction
                         .getCollisionPointsByMode(this.opts.handleCollisionWith);
                     if (polyTest(selectorPoints)) {
-                        if (this.opts.geomineMode && (!interaction.additionalInformation ||
-                            !interaction.additionalInformation.nglFeatureType)) {
-                            return null;
-                        }
                         return {
                             id: parseInt(id),
                             type: type,
