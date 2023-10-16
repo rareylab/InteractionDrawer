@@ -503,14 +503,24 @@ class HoverHandler {
      *
      * @param atomId {Number} - id of the atom that shall be hovered
      */
-    hoverAtomById(atomId) {
-        const structuresData = this.sceneData.structuresData;
-        const structureId = structuresData.atomIdsToStructure[atomId];
-        if (structureId !== undefined) {
-            const hover = {
-                type: 'atom', structureId: structureId, id: atomId
-            };
-            this.handleHoverStructureHit(hover);
+    hoverAtomByInfileId(atomId) {
+        const structures = this.sceneData.structuresData.structures;
+        for (const structureId in structures) {
+            const structure = structures[structureId];
+            const atoms = structure.atomsData.atomById;
+            for (const id in atoms) {
+                const atom = atoms[id];
+                if (!atom.additionalInformation || !atom.additionalInformation.infileId) {
+                    continue;
+                }
+                let infileId = atom.additionalInformation.infileId;
+                if (atomId === infileId) {
+                    const hover = {
+                        type: 'atom', structureId: structureId, id: parseInt(id)
+                    };
+                    this.handleHoverStructureHit(hover);
+                }
+            }
         }
     }
 }
